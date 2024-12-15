@@ -1,7 +1,7 @@
 package org.s2n.csv.driver;
 
 import org.s2n.csv.config.CSVTransformConfig;
-import org.s2n.csv.exceptions.ReadCsvRowException;
+import org.s2n.csv.exceptions.TransformCsvRowException;
 import org.s2n.csv.service.CSVProcessor;
 import org.s2n.csv.service.CSVTransformService;
 
@@ -39,7 +39,7 @@ public class Main {
                     totalLines++;
                 }
 
-            } catch (ReadCsvRowException e) {
+            } catch (TransformCsvRowException e) {
                 failedLines++;
                 totalLines++;
                 errors.add(e.getMessage());

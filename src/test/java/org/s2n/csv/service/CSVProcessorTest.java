@@ -2,13 +2,14 @@ package org.s2n.csv.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.s2n.csv.exceptions.ReadCsvRowException;
 
 import java.util.Map;
 
 public class CSVProcessorTest {
 
     @Test
-    public void testCsvProcessor() throws Exception {
+    public void testCsvProcessor() {
         CSVProcessor csvProcessor = new CSVProcessor("src/test/resources/randomCsvFileWith2lines.csv");
         Map<String, String> csvLine ;
         while ( (csvLine = csvProcessor.nextLine()) != null ) {
@@ -23,6 +24,13 @@ public class CSVProcessorTest {
             Assertions.assertDoesNotThrow(() -> Integer.parseInt(age));
 
         }
+    }
+
+    @Test
+    public void testCsvProcessorWithInvalidCsvStructure() throws Exception {
+        CSVProcessor csvProcessor = new CSVProcessor("src/test/resources/sample2error.csv");
+
+        Assertions.assertThrows(ReadCsvRowException.class, () -> csvProcessor.nextLine());
     }
 
 }
