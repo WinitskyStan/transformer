@@ -3,6 +3,7 @@ package org.s2n.csv.service;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.s2n.csv.exceptions.FileLoadException;
+import org.s2n.csv.exceptions.ReadCsvRowException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,21 +23,25 @@ public class CSVProcessor {
         }
     }
 
-    public Map<String, String> nextLine() throws CsvValidationException, IOException {
-        String[] line = csvReader.readNext();
+    public Map<String, String> nextLine() {
+        try {
+            String[] line = csvReader.readNext();
 
-        if (line == null) {
-            return null;
+            if (line == null) {
+                return null;
+            }
+
+            HashMap<String, String> headerToValueForLine = new HashMap<>();
+            int minIndex = line.length < headers.length ? line.length : headers.length;
+
+            for (int i = 0; i < minIndex; i++) {
+                headerToValueForLine.put(headers[i], line[i]);
+            }
+
+            return headerToValueForLine;
+        } catch (IOException | CsvValidationException e) {
+            throw new ReadCsvRowException(e);
         }
-
-        HashMap<String, String> headerToValueForLine = new HashMap<>();
-        int minIndex = line.length < headers.length ? line.length : headers.length;
-
-        for (int i = 0; i < minIndex; i++) {
-            headerToValueForLine.put(headers[i], line[i]);
-        }
-
-        return headerToValueForLine;
     }
 
 }

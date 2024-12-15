@@ -1,6 +1,7 @@
 package org.s2n.csv.driver;
 
 import org.s2n.csv.config.CSVTransformConfig;
+import org.s2n.csv.exceptions.ReadCsvRowException;
 import org.s2n.csv.service.CSVProcessor;
 import org.s2n.csv.service.CSVTransformService;
 
@@ -23,14 +24,27 @@ public class Main {
         this.csvProcessor = new CSVProcessor(csvFilePath);
     }
 
-    public void transformCsvFile() throws Exception {
+    public void transformCsvFile() {
         Map<String, String> line;
+        boolean hasMoreLines = true;
 
-        while ((line = csvProcessor.nextLine()) != null) {
-            Map<String, Object> transformedLine = csvTransformService.transformCsvLine(line);
-            System.out.println(transformedLine);
-            successfulLines++;
-            totalLines++;
+        while (hasMoreLines) {
+            try {
+                hasMoreLines = ((line = csvProcessor.nextLine()) != null);
+
+                if (hasMoreLines) {
+                    Map<String, Object> transformedLine = csvTransformService.transformCsvLine(line);
+                    System.out.println(transformedLine);
+                    successfulLines++;
+                    totalLines++;
+                }
+
+            } catch (ReadCsvRowException e) {
+                failedLines++;
+                totalLines++;
+                errors.add(e.getMessage());
+            }
+
         }
 
         System.out.println("Total lines: " + totalLines);

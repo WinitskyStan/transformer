@@ -16,7 +16,7 @@ public class CSVTransformService {
         this.csvTransformConfig = csvTransformConfig;
     }
 
-    public Map<String, Object> transformCsvLine(Map<String, String> fromCsvLine) throws Exception {
+    public Map<String, Object> transformCsvLine(Map<String, String> fromCsvLine) {
         return csvTransformConfig.entries().stream()
                 .map(e -> transformCell(e, fromCsvLine))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
