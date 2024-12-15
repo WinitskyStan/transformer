@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    private final CSVTransformConfig csvTransformConfig ;
+    private final CSVTransformConfig csvTransformConfig;
     private final CSVTransformService csvTransformService;
     private final CSVProcessor csvProcessor;
     private int totalLines = 0;
@@ -17,16 +17,16 @@ public class Main {
     private int successfulLines = 0;
     private List<String> errors = new ArrayList<>();
 
-    public Main(String configFilePath, String csvFilePath) throws Exception {
+    public Main(String configFilePath, String csvFilePath) {
         this.csvTransformConfig = CSVTransformConfig.fromJson(configFilePath);
         this.csvTransformService = new CSVTransformService(csvTransformConfig);
         this.csvProcessor = new CSVProcessor(csvFilePath);
     }
 
     public void transformCsvFile() throws Exception {
-        Map<String, String> line ;
+        Map<String, String> line;
 
-        while ( (line = csvProcessor.nextLine() ) != null ) {
+        while ((line = csvProcessor.nextLine()) != null) {
             Map<String, Object> transformedLine = csvTransformService.transformCsvLine(line);
             System.out.println(transformedLine);
             successfulLines++;
@@ -47,9 +47,11 @@ public class Main {
     public int getFailedLines() {
         return failedLines;
     }
+
     public int getSuccessfulLines() {
         return successfulLines;
     }
+
     public int getTotalLines() {
         return totalLines;
     }
