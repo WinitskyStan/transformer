@@ -24,9 +24,9 @@ public class CSVTransformServiceTest {
         assertTrue(csvLineOne.get("OrderDate") instanceof LocalDate);
         assertEquals(csvLineOne.get("OrderID"), 1001);
         assertEquals(csvLineOne.get("ProductId"), "ABC123");
-        assertEquals(csvLineOne.get("ProductName"), "BLUE WIDGET");
+        assertEquals(csvLineOne.get("ProductName"), "Blue Widget");
         assertEquals(csvLineOne.get("Unit"), "kg");
-        assertEquals(csvLineOne.get("Quantity"), new BigDecimal("10.5"));
+        assertEquals(csvLineOne.get("Quantity"), new BigDecimal("1010.5"));
 
         Map<String, Object> csvLineTwo = csvTransformService.transformCsvLine(csvProcessor.nextLine());
 

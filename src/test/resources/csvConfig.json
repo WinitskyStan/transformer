@@ -4,7 +4,7 @@
       "fromColumnNames": ["Order Number"],
       "toColumnName": "OrderID",
       "toColumnType": "INTEGER",
-      "fromColumnFormat": ["d+"],
+      "fromColumnFormat": ["\\d+"],
       "toColumnFormat": null
     },
     {
@@ -18,14 +18,14 @@
       "fromColumnNames": ["Product Number"],
       "toColumnName": "ProductId",
       "toColumnType": "STRING",
-      "fromColumnFormat": ["[A-Z0-9]+"],
+      "fromColumnFormat": ["[A-Za-z 0-9]+"],
       "toColumnFormat": null
     },
     {
       "fromColumnNames": ["Product Name"],
       "toColumnName": "ProductName",
       "toColumnType": "STRING",
-      "fromColumnFormat": ["[A-Z]+"],
+      "fromColumnFormat": ["[A-Za-z ]+"],
       "toColumnFormat": "proper"
     },
     {
