@@ -29,7 +29,7 @@ A Java library for transforming CSV files according to configurable json file.
     - Service Layer (org.s2n.csv.service) - Handles CSV processing and transformation line by line. Loads each line as a map of header name to String value. Transforms into a map of header name to Object (String, Integer, BigDecimal, LocalDate, etc).
     - Main (org.s2n.csv.driver) - Command line interface for running the application. Handles command line arguments and outputs transformation results to the console. Keeps track of errors and total lines processed. 
 
-2.Data Flow
+2. Data Flow
     - Configuration loaded from json file.
     - CSVProcessor reads a CSV file and returns a Map of header names to String values line by line.
     - CSVTransformService transforms a Map of header names to String values into a Map of header names to Objects.
