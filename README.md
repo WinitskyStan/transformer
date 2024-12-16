@@ -76,6 +76,7 @@ or to use a default configuration and csv file:
 ```bash
 mvn exec:java
 ```
+
 ## Video Demo
 
 <video width="640" height="360" controls>
