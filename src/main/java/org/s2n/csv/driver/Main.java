@@ -54,8 +54,15 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        // just a dummy main method for testing purposes
-        new Main("src/test/resources/csvConfig.json", "src/test/resources/sample1.csv").transformCsvFile();
+//        new Main("src/test/resources/csvConfig.json", "src/test/resources/sample1.csv").transformCsvFile();
+
+        if (args.length != 2) {
+            System.err.println("Usage: java Main <config-file-path> <csv-file-path>");
+            System.exit(1);
+        }
+
+        new org.s2n.csv.driver.Main(args[0], args[1]).transformCsvFile();
+
     }
 
     public int getFailedLines() {
