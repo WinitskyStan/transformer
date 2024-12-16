@@ -76,3 +76,6 @@ or to use a default configuration and csv file:
 ```bash
 mvn exec:java
 ```
+## Video Demo
+
+![Video Title](csvTransformerSmall.mp4)
