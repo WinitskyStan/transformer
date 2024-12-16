@@ -1,0 +1,46 @@
+{
+  "entries": [
+    {
+      "fromColumnNames": ["Order Number"],
+      "toColumnName": "OrderID",
+      "toColumnType": "INTEGER",
+      "fromColumnFormat": ["\\d+"],
+      "toColumnFormat": null
+    },
+    {
+      "fromColumnNames": ["Year", "Month", "Day"],
+      "toColumnName": "OrderDate",
+      "toColumnType": "DATE",
+      "fromColumnFormat":["yyyy", "MM", "dd"],
+      "toColumnFormat": null
+    },
+    {
+      "fromColumnNames": ["Product Number"],
+      "toColumnName": "ProductId",
+      "toColumnType": "STRING",
+      "fromColumnFormat": ["[A-Za-z0-9-]+"],
+      "toColumnFormat": null
+    },
+    {
+      "fromColumnNames": ["Product Name"],
+      "toColumnName": "ProductName",
+      "toColumnType": "STRING",
+      "fromColumnFormat": ["[A-Za-z ]+"],
+      "toColumnFormat": "proper"
+    },
+    {
+      "fromColumnNames": ["Count"],
+      "toColumnName": "Quantity",
+      "toColumnType": "DECIMAL",
+      "fromColumnFormat": ["#,##0.0#"],
+      "toColumnFormat": null
+    },
+    {
+      "fromColumnNames": [],
+      "toColumnName": "Unit",
+      "toColumnType": "FIXED",
+      "fromColumnFormat": [],
+      "toColumnFormat": "kg"
+    }
+  ]
+}
