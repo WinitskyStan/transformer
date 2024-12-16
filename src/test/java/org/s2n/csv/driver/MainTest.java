@@ -18,4 +18,16 @@ public class MainTest {
         assertEquals(2, main.getSuccessfulLines());
         assertEquals(main.getErrors(),  new ArrayList<String>());
     }
+
+    @Test
+    public void testMainWithErrors() throws Exception {
+        Main main = new Main("src/test/resources/csvConfig.json", "src/test/resources/sampleManyErrors.csv");
+        main.transformCsvFile();
+
+        assertEquals(10, main.getTotalLines());
+        assertEquals(5, main.getFailedLines());
+        assertEquals(5, main.getSuccessfulLines());
+        assertEquals(main.getErrors().size(),  5);
+
+    }
 }
