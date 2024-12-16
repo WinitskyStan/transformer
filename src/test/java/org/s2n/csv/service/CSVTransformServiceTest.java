@@ -21,7 +21,7 @@ public class CSVTransformServiceTest {
 
         Map<String, Object> csvLineOne = csvTransformService.transformCsvLine(csvProcessor.nextLine());
 
-        assertTrue(csvLineOne.get("OrderDate") instanceof LocalDate);
+        assertEquals(csvLineOne.get("OrderDate"), LocalDate.of(2024, 1, 15));
         assertEquals(csvLineOne.get("OrderID"), 1001);
         assertEquals(csvLineOne.get("ProductId"), "ABC123");
         assertEquals(csvLineOne.get("ProductName"), "Blue Widget");

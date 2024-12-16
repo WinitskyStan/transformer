@@ -12,6 +12,9 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- set default values -->
+        <config>src/test/resources/csvConfig.json</config>
+        <csv>src/test/resources/sampleManyErrors.csv</csv>
     </properties>
 
     <dependencies>
@@ -37,4 +40,22 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>org.s2n.csv.driver.Main</mainClass>
+                    <arguments>
+                        <argument>${config}</argument>
+                        <argument>${csv}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
