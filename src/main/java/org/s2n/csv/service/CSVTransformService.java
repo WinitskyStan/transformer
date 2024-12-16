@@ -17,6 +17,12 @@ public class CSVTransformService {
         this.csvTransformConfig = csvTransformConfig;
     }
 
+    /**
+     * Map a row returned from CSVProcessor according to defined json config.
+     * Returns a Map<String, Object> of header to Object, where Object is String, Integer, BigDecimal, LocalDate, etc
+     * @param fromCsvLine
+     * @return
+     */
     public Map<String, Object> transformCsvLine(Map<String, String> fromCsvLine) {
         return csvTransformConfig.entries().stream()
                 .map(e -> transformCell(e, fromCsvLine))

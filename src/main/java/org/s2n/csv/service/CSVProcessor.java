@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Reads a CSV file and returns a Map of header names to String values line by line
+ * for processing Large files
+ */
 public class CSVProcessor {
 
     private final CSVReader csvReader;
@@ -23,6 +28,10 @@ public class CSVProcessor {
         }
     }
 
+    /**
+     * Reads next line from the CSV file as a Map of header names to String values, similar to a JSON structure
+     * @return
+     */
     public Map<String, String> nextLine() {
         try {
             String[] line = csvReader.readNext();

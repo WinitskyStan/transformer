@@ -8,6 +8,12 @@ import java.io.IOException;
 import java.util.List;
 
 public record CSVTransformConfig(List<CSVTransformConfigEntry> entries) {
+
+    /**
+     *  Load the CSVTransformConfig from a JSON file
+     * @param filePath
+     * @return CSVTransformConfig
+     */
     public static CSVTransformConfig fromJson(String filePath) {
         try {
             return new ObjectMapper().readValue(new File(filePath), CSVTransformConfig.class);

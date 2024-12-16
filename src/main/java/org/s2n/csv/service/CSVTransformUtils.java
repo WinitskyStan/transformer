@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Utility class for basic transformation operations and validation
+ * Simple utility methods for mapping CSV columns to Java types according to configuration
  */
 public class CSVTransformUtils {
 
