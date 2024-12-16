@@ -6,7 +6,18 @@ A Java library for transforming CSV files according to configurable json file.
 ## Features
 
 - Includes a CSVProcessor to read and parse CSV file as a list of Maps. Each map represents a row of the CSV file, mapping the header to the String value, similar to a json object.
+```java
+CSVProcessor csvProcessor = new CSVProcessor("sample.csv");
+var csvLine = csvProcessor.nextLine();
+var orderNumber = csvLine.get("Order Number");
+```
 - Includes a CSVTransformService to transform a row from CSVProcessor into an object of type Map<String, Object> according to a configuration file. Similarly, this maps a header to an Object of type String, Integer, BigDecimal, LocalDate, etc.
+```java
+CSVTransformService csvTransformService = 
+        new CSVTransformService(CSVTransformConfig.fromJson("config.json"));
+var transformedLine = csvTransformService.transformCsvLine(csvLine);
+LocalDate orderDate = (LocalDate) transformedLine.get("OrderDate");
+```
 - Includes a CSVTransformConfig to configure the process according to a json configuration file.
 - Includes a Main class to run the application, outputs the result of the transformation to the console and keeps track of errors.
 - Includes test cases for all classes and errors.
