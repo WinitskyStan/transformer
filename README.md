@@ -10,6 +10,7 @@ A Java library for transforming CSV files according to configurable json file.
 - Includes a CSVTransformConfig to configure the process according to a json configuration file.
 - Includes a Main class to run the application, outputs the result of the transformation to the console and keeps track of errors.
 - Includes test cases for all classes and errors.
+- Includes javadoc comments for classes when applicable.
 
 ## Prerequisites
 
