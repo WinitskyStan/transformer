@@ -3,7 +3,6 @@ package org.s2n.csv.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.s2n.csv.exceptions.ReadCsvRowException;
-
 import java.util.Map;
 
 public class CSVProcessorTest {
@@ -27,7 +26,7 @@ public class CSVProcessorTest {
     }
 
     @Test
-    public void testCsvProcessorWithInvalidCsvStructure() throws Exception {
+    public void testCsvProcessorWithInvalidCsvStructure() {
         CSVProcessor csvProcessor = new CSVProcessor("src/test/resources/sample2error.csv");
 
         Assertions.assertThrows(ReadCsvRowException.class, () -> csvProcessor.nextLine());
